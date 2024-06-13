@@ -43,7 +43,7 @@ xlabel('Elapssed Time (hr)','Interpreter','Latex')
 ylabel('Control Signal','Interpreter','Latex')
 
 % Exporting Chart
-exportgraphics(gcf,'RTC_Charts.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\RTC_Charts.pdf','ContentType','vector')
 if flag_save_data == 1
     % Exporting txt files
     Reservoir_Outflow = table((time_plot(1:dim)'),(out_r_final(1:dim)),'VariableNames',{'Time (hr)','Reservoir Outflow (m3/s)'});
@@ -78,5 +78,5 @@ set(gca,'ycolor','black')
 ylim([0,400])
 ylabel('Rainfall (mm/h)','Interpreter','Latex')
 legend('Watershed','Reservoir','Channel','Rainfall','Interpreter','Latex')
-exportgraphics(gcf,'Hydrographs.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrographs.pdf','ContentType','vector')
 close all

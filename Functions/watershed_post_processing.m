@@ -145,7 +145,7 @@ if flags.flag_spatial_rainfall == 1 && flags.flag_rainfall == 1
     ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
     zlabel ('Rainfall Volume (mm)','Interpreter','Latex','FontSize',12) 
 end
-exportgraphics(gcf,'Isoietal_Map.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Isoietal_Map.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Plotting Isoeital Maps of ETP
 if flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
@@ -190,7 +190,7 @@ if flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
     ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
     zlabel ('ETR Volume (mm)','Interpreter','Latex','FontSize',12) 
 end
-exportgraphics(gcf,'Isoietal_Map_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Isoietal_Map_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Plotting Isoeital Maps of ETP
 if flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
@@ -235,7 +235,7 @@ if flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
     ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
     zlabel ('ETP Volume (mm)','Interpreter','Latex','FontSize',12) 
 end
-exportgraphics(gcf,'Isoietal_Map_ETP.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Isoietal_Map_ETP.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Plotting All Three Maps Together
 if flags.flag_spatial_rainfall == 1 && flags.flag_rainfall == 1 && flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
@@ -423,7 +423,7 @@ if flags.flag_spatial_rainfall == 1 && flags.flag_rainfall == 1 && flags.flag_sp
     ylim([ceil(min(f_rate)/5)*6 300])
     grid on       
 end
-exportgraphics(gcf,'Rain_ETP_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Rain_ETP_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Plotting All Three Maps Together (PAPER)
 if flags.flag_spatial_rainfall == 1 && flags.flag_rainfall == 1 && flags.flag_spatial_ETP == 1 && flags.flag_ETP == 1
@@ -649,7 +649,7 @@ end
     xlabel('Prob($x \leq x^*$) (\%)','interpreter','latex');
     ylabel('x','interpreter','latex');
 end
-exportgraphics(gcf,'Rain_ETP_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Rain_ETP_ETR.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Plotting Spatial Rainfall
 if flags.flag_spatial_rainfall == 1
@@ -918,7 +918,7 @@ if flags.flag_ETP == 1 && flags.flag_rainfall == 1 && flags.flag_spatial_ETP ~= 
     grid on    
 end
 
-exportgraphics(gcf,'Summary.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Summary.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 
 %% Hydrographs - Elapsed Time
 % Date Scale
@@ -947,7 +947,7 @@ set(gca,'ycolor','black');
 plot(time_records_hydrographs*time_scale,Depth_out(1:length(time_records_hydrographs)),'linewidth',2,'color','black','LineStyle','--');
 ylabel('Depth ($\mathrm{m}$)','interpreter','latex');
 grid on
-exportgraphics(gcf,'Hydrograph Watershed.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrograph Watershed.pdf','ContentType','vector')
 
 %% Rainfall and Flow Discharge
 close all
@@ -965,7 +965,7 @@ plot(time_save/24/60,rain_outlet(1:length(time_save)),'linewidth',2,'color','blu
 ylabel('Rainfall Intensity ($\mathrm{mm/h}$)','interpreter','latex');
 ylim([0 300])
 grid on
-exportgraphics(gcf,'Hydrograph_Rainfall.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrograph_Rainfall.pdf','ContentType','vector')
 
 %% Hydrographs - Real-Time
 % Date Scale
@@ -984,7 +984,7 @@ plot(time_real,Depth_out(1:length(time_real)),'linewidth',2,'color','black','Lin
 ylabel('Depth ($\mathrm{m}$)','interpreter','latex');
 grid on
 legend('Flow','Depth','interpreter','latex')
-exportgraphics(gcf,'Hydrograph Watershed.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrograph Watershed.pdf','ContentType','vector')
 
 %% Rainfall and Flow Discharge - Real Time
 close all
@@ -1004,7 +1004,7 @@ plot(time_real_rainfall,rain_outlet(1:length(time_real_rainfall)),'linewidth',2,
 ylabel('Rainfall Intensity ($\mathrm{mm/h}$)','interpreter','latex');
 ylim([0 300])
 grid on
-exportgraphics(gcf,'Hydrograph_Rainfall.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrograph_Rainfall.pdf','ContentType','vector')
 
 %% Climatologic Data Summary
 
@@ -1038,7 +1038,7 @@ if flags.flag_spatial_ETP ~=1 && flags.flag_ETP == 1
     grid on
     legend('ETP','$f_g$','Rainfall','interpreter','latex')
     
-    exportgraphics(gcf,'Climatologic_Summary.pdf','ContentType','vector')
+    exportgraphics(gcf,'Outputs\Climatologic_Summary.pdf','ContentType','vector')
     % 
     end
     %% Rainfall + Infiltration at the Outlet - Real Time
@@ -1075,7 +1075,7 @@ if flags.flag_spatial_ETP ~=1 && flags.flag_ETP == 1
     legend('Outlet Flow','Rainfall','Mean Soil Flux')
     ylim([ceil(min(f_rate)/5)*6 300])
     grid on
-    exportgraphics(gcf,'Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
+    exportgraphics(gcf,'Outputs\Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
     
     %%
     %%%% ---------- Average Infiltration at Hydrograph Times ---------- %%%%
@@ -1098,7 +1098,7 @@ if flags.flag_spatial_ETP ~=1 && flags.flag_ETP == 1
     legend('Outlet Flow','Rainfall','Mean Soil Flux','interpreter','latex')
     ylim([ceil(min(f_rate)/5)*6 300])
     grid on
-    exportgraphics(gcf,'Hydrograph_Effective_Rainfall_Detail.pdf','ContentType','vector')
+    exportgraphics(gcf,'Outputs\Hydrograph_Effective_Rainfall_Detail.pdf','ContentType','vector')
     % 
     %%
     %% Rainfall + Infiltration at the Outlet 
@@ -1135,7 +1135,7 @@ if flags.flag_spatial_ETP ~=1 && flags.flag_ETP == 1
     legend('Outlet Flow','Rainfall','Mean Soil Flux')
     ylim([ceil(min(f_rate)/5)*6 300])
     grid on
-    exportgraphics(gcf,'Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
+    exportgraphics(gcf,'Outputs\Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
     
     %%
     % %%%% ---------- Average Infiltration at Hydrograph Times ---------- %%%%
@@ -1158,7 +1158,7 @@ if flags.flag_spatial_ETP ~=1 && flags.flag_ETP == 1
     legend('Outlet Flow','Rainfall','Mean Soil Flux')
     ylim([ceil(min(f_rate)/5)*6 300])
     grid on
-    exportgraphics(gcf,'Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
+    exportgraphics(gcf,'Outputs\Hydrograph_Effective_Rainfall.pdf','ContentType','vector')
     % 
     % %% Soil Content at Specifc Cell - Real Time
     % close all

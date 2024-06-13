@@ -60,7 +60,7 @@ plot([0:1:(n_horizons-1)]*MPC_Control_Parameters.Control_Horizon/60,OF_value,'gr
 xlabel('Time (hr)','Interpreter','latex')
 ylabel('Cost Function','Interpreter','latex')
 grid on
-exportgraphics(gcf,'MPC.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\MPC.pdf','ContentType','vector')
 
 % % Exporting Chart
 % exportgraphics(gcf,'RTC_Charts.pdf','ContentType','vector')
@@ -95,7 +95,7 @@ set(gca,'ycolor','black')
 ylim([0,400])
 ylabel('Rainfall (mm/h)','Interpreter','Latex')
 legend('Watershed','Reservoir','Rainfall','Interpreter','Latex')
-exportgraphics(gcf,'Hydrographs_System_Detail.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Hydrographs_System_Detail.pdf','ContentType','vector')
 
 %% Objective Function Values
 figure(3)
@@ -104,7 +104,7 @@ plot([1:1:n_horizons],OF_value,'green','LineWidth',1)
 xlabel('Control Horizon','Interpreter','latex')
 ylabel('Cost Function','Interpreter','latex')
 grid on
-exportgraphics(gcf,'Objective_Function.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Objective_Function.pdf','ContentType','vector')
 
 
 %% Stage-Area-Volume
@@ -142,7 +142,7 @@ hlines(2).LineWidth = 2;
 hlines(2).LineStyle = '-.';
 hlines(3).LineWidth = 2;
 hlines(3).LineStyle = '-';
-exportgraphics(gcf,'Stage_Area_Volume_Time.pdf','ContentType','vector')
+exportgraphics(gcf,'Outputs\Stage_Area_Volume_Time.pdf','ContentType','vector')
 
 
 %% Functions

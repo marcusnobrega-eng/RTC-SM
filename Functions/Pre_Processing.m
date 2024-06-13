@@ -4,6 +4,11 @@
 % Pre-processing File
 % Goal: Create the pre-processing file
 
+%% Creating Folders
+try
+    mkdir 'Pre_Processing_Outputs\'
+end
+
 %% Load ToolBoxes
 addpath(genpath(Topo_path));
 
@@ -260,9 +265,9 @@ ETR_save = ETP_save;
 if flags.flag_ETP == 1 % We only read it if we are actually modeling it
     % Read ETP data
     if flags.flag_spatial_ETP == 1
-        input_table = readtable('Input_Data_Test','Sheet','ETP_Spatial_Input'); % Input ETP data to interpolate from IDW method.
+        input_table = readtable(Input_Data_Label,'Sheet','ETP_Spatial_Input'); % Input ETP data to interpolate from IDW method.
     else
-        input_table = readtable('Input_Data_Test','Sheet','Concentrated_ETP_Data'); % Input ETP data to interpolate from IDW method.
+        input_table = readtable(Input_Data_Label,'Sheet','Concentrated_ETP_Data'); % Input ETP data to interpolate from IDW method.
     end
     Krs = 0.16; % Default.
     alpha_albedo_input = 0.23; % Default.
@@ -336,8 +341,8 @@ if flags.flag_ETP == 1 % We only read it if we are actually modeling it
     end
     % Extract coordinates from the raster
     if flags.flag_resample == 1
-        GRIDobj2geotiff(DEM_raster,'DEM_resampled')
-        fname = 'DEM_resampled.tif'; % Input DEM
+        GRIDobj2geotiff(DEM_raster,'Outputs\Input_Data\DEM_resampled')
+        fname = 'Outputs\Input_Data\DEM_resampled.tif'; % Input DEM
     else
         fname = DEM_path; % Input DEM
     end
@@ -430,7 +435,7 @@ if flags.flag_rainfall == 0 % No rainfall
     rainfall_matrix = flags.flag_rainfall*zeros(size(dem));
 elseif  flags.flag_spatial_rainfall == 1
     % Spatial Rainfall Case
-    input_table = readtable('Input_Data_Test','Sheet','Rainfall_Spatial_Input');
+    input_table = readtable(Input_Data_Label,'Sheet','Rainfall_Spatial_Input');
     % Observations
     Rainfall_Properties.n_obs = sum((table2array(input_table(:,2))>=0)); % Number of observations
     Rainfall_Properties.n_max_raingauges = 50;
@@ -453,7 +458,7 @@ if flags.flag_rainfall == 1 % We are modeing rainfall
 
     if flags.flag_spatial_rainfall ~= 1
         % We need to calculate the step_rainfall from the rainfall data
-        rainfall_data = readtable('Input_Data_Test','Sheet','Concentrated_Rainfall_Data');
+        rainfall_data = readtable(Input_Data_Label,'Sheet','Concentrated_Rainfall_Data');
         precipitation_data = table2array(rainfall_data(:,2));
         % We are assuming that the rainfall begins with the initial time of
         % the model
@@ -512,7 +517,7 @@ drainage_area = sum(sum(double(DEM>0)))*resolution^2/1000/1000; % area in km2
 
 
 % Read Reservoir Area
-stage_area = table2array(readtable('Input_Data_Test','Sheet','Reservoir_Stage_Area'));
+stage_area = table2array(readtable(Input_Data_Label,'Sheet','Reservoir_Stage_Area'));
 % Reservoir Stage-Varying Functions
 [Area_Functions,Volume_Function,h_stage] = reservoir_stage_varying_functions(stage_area);
 Reservoir_Parameters.hmax = max((stage_area(:,1))); % Maximum reservoir area (You've got to enter it). The rationale with this is that rainfall occurs in the top area of the reservoir

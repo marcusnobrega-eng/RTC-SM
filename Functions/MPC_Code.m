@@ -504,5 +504,11 @@ end
 % graphs_wshed_reservoir_channel
 time_MPC = toc;
 
-save('workspace_after_MPC');
+save('label_MPC_after');
+
+% For cases where only the reservoir is run:
+display_results_only_reservoir;
+
+% For cases where watershed, reservoir, and channel are modeled
+% display_results
 

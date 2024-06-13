@@ -3,6 +3,14 @@
 % Goal: Estiamate watershed properties
 % Last Modified: 09/2022
 
+try 
+    mkdir Outputs\
+end
+
+try
+    mkdir Outputs\Input_Data
+end
+
 %% Data in raster format (GIS Data)
 
 % Rasters
@@ -328,10 +336,10 @@ caxis([h_min zmax]);
 colormap(jet)
 hold on
 k = colorbar ;
-ylabel(k,'$n$ ($\mathrm{m.s^{-1/3}}$)','Interpreter','Latex','FontSize',12)
+ylabel(k,'$n$ ($\mathrm{s \cdot m^{-1/3}}$)','Interpreter','Latex','FontSize',12)
 xlabel(' x (m) ','Interpreter','Latex','FontSize',12)
 ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
-zlabel ('$n$ ($\mathrm{m.s^{-1/3}}$)','Interpreter','Latex','FontSize',12)
+zlabel ('$n$ ($\mathrm{s \cdot m^{-1/3}}$)','Interpreter','Latex','FontSize',12)
 
 % ---------- h_0 --------------- %
 
@@ -509,7 +517,7 @@ xlabel(' x (m) ','Interpreter','Latex','FontSize',12)
 ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
 zlabel ('$h_{ef}^0$ ($\mathrm{m}$)','Interpreter','Latex','FontSize',12)
 
-exportgraphics(gcf,'Input_Maps.TIF','ContentType','image','Colorspace','rgb','Resolution',800)
+exportgraphics(gcf,'Outputs\Input_Data\Input_Maps.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 close all
 
 %% Plotting Flow Direction and Slope Maps
@@ -586,7 +594,7 @@ xlabel(' x (m) ','Interpreter','Latex','FontSize',12)
 ylabel ('y (m) ','Interpreter','Latex','FontSize',12)
 zlabel ('Direção)','Interpreter','Latex','FontSize',12)
 
-exportgraphics(gcf,'Fdir_Slope.TIF','ContentType','image','Colorspace','rgb','Resolution',600)
+exportgraphics(gcf,'Outputs\Input_Data\Fdir_Slope.TIF','ContentType','image','Colorspace','rgb','Resolution',300)
 close all
 %% Post Processing Rasters
 % -------- In case you want to plot it -------- %
